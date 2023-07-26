@@ -37,13 +37,13 @@ class ViettelSDKPlugin: CDVPlugin {
                         case .success(let res):
                             print("kiemtra: res:", res)
                             DispatchQueue.main.async {
-                                pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Register device success")
+                                pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "success")
                                 self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
                             }
                         case .failure(let error):
                             print("kiemtra: error", error.localizedDescription)
                             DispatchQueue.main.async {
-                                pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "Register device failed: \(error.localizedDescription)")
+                                pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "\(error.localizedDescription)")
                                 self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
                             }
                         }
@@ -79,13 +79,13 @@ class ViettelSDKPlugin: CDVPlugin {
                         case .success(let res):
                             print("kiemtra: res:", res)
                             DispatchQueue.main.async {
-                                pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "authoriseaPendingRequest success")
+                                pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "success")
                                 self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
                             }
                         case .failure(let error):
                             print("kiemtra: error", error.localizedDescription)
                             DispatchQueue.main.async {
-                                pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "authoriseaPendingRequest failed: \(error.localizedDescription)")
+                                pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "\(error.localizedDescription)")
                                 self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
                             }
                         }

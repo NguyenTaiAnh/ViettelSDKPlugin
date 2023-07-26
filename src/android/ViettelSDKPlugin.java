@@ -81,14 +81,14 @@ public class ViettelSDKPlugin extends CordovaPlugin {
               @Override
               public void onSuccess(CertificateResponse certificateResponse) {
                 Log.d("registerDevice", "Success");
-                cordova.getActivity().runOnUiThread(() -> callbackContext.success("Register device success"));
+                cordova.getActivity().runOnUiThread(() -> callbackContext.success("success"));
               }
 
               @Override
               public void onFail(ResponseError responseError) {
                 Log.d("registerDevice", "onFail");
                 Log.d("Error Message:", responseError.getErrorMessage());
-                cordova.getActivity().runOnUiThread(() -> callbackContext.error("Register device failed: " + responseError.getErrorMessage()));
+                cordova.getActivity().runOnUiThread(() -> callbackContext.error(responseError.getErrorMessage()));
               }
 
               @Override
@@ -103,7 +103,7 @@ public class ViettelSDKPlugin extends CordovaPlugin {
             });
           } catch (Exception e) {
             Log.d("Kiemtra bug: ", e.getMessage());
-            cordova.getActivity().runOnUiThread(() -> callbackContext.error("Register device failed: " + e.getMessage()));
+            cordova.getActivity().runOnUiThread(() -> callbackContext.error(e.getMessage()));
           }
         });
       } catch (Exception e) {
@@ -121,8 +121,6 @@ public class ViettelSDKPlugin extends CordovaPlugin {
     System.out.println("kiemtra check true false:"+  request != null && request.length() > 0 &&  access_token != null && access_token.length() > 0 && transactionID != null && transactionID.length() > 0);
 
     if (request != null && request.length() > 0 &&  access_token != null && access_token.length() > 0 && transactionID != null && transactionID.length() > 0) {
-      Log.d("kiemtra :", "voooô");
-
       try {
         cordova.getActivity().runOnUiThread(() -> {
           try {
@@ -136,18 +134,15 @@ public class ViettelSDKPlugin extends CordovaPlugin {
               @Override
               public void onSuccess() {
 //                cordova.getActivity().runOnUiThread(() -> callbackContext.success(" device success"));
-                callbackContext.success(" device success");
-                System.out.println("Report: On Success");
-
-                System.out.println("=============================Success===================");
+                callbackContext.success("success");
               }
 
               @Override
               public void onFail(ResponseError responseError) {
-                System.out.println("Report: onFail");
+                System.out.println("authorisationPendingRequest: onFail");
                 System.out.println("=====================================BEGIN==========================");
                 System.out.println(responseError.getErrorMessage());
-                callbackContext.error("Register device failed: " + responseError.getErrorMessage());
+                callbackContext.error(responseError.getErrorMessage());
 //                cordova.getActivity().runOnUiThread(() -> callbackContext.error("Register device failed: " + responseError.getErrorMessage()));
                 System.out.println("=====================================END==========================");
 
@@ -171,7 +166,7 @@ public class ViettelSDKPlugin extends CordovaPlugin {
           }
         });
       } catch (Exception e) {
-        Log.d("Kiemtra bug: tétttt ", e.getMessage());
+        Log.d("Kiemtra bug: ", e.getMessage());
         callbackContext.error("Register device failed: try catch " + e.getMessage());
       }
     } else {
